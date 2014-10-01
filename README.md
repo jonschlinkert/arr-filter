@@ -1,6 +1,5 @@
 # arr-filter [![NPM version](https://badge.fury.io/js/arr-filter.svg)](http://badge.fury.io/js/arr-filter)
 
-
 > Faster alternative to javascript's native filter method and [array-filter](https://github.com/juliangruber/array-filter).
 
 [array-filter](https://github.com/juliangruber/array-filter) is pretty popular, but it's tuned to be used in older browsers and it falls back on native `.filter()` when available, which is much slower. See [jsperf results](http://jsperf.com/array-filter-while-vs-for/2). The functions used in the benchmarks are the top performers, reduced down from 10 or 11 additional functions.

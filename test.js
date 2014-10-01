@@ -35,3 +35,7 @@ it('should filter by file extension', function () {
   filter(['a/b/c.js', 'a/b/c.css'], ext('.css')).should.eql(['a/b/c.css']);
   filter(['a/b/c.js', 'a/b/c.css'], ext('.js')).should.eql(['a/b/c.js']);
 });
+
+it('should throw an error when cb is missing.', function () {
+  should((function() {filter(['a/b/c.js', 'a/b/c.css']); }())).throw('undefined is not a function');
+});

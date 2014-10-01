@@ -16,7 +16,7 @@ module.exports = function filter(arr, cb, thisArg) {
   }
 
   if (typeof cb != 'function') {
-    return new TypeError('Filter expects a callback function.');
+    return new TypeError();
   }
 
   var len = arr.length;
