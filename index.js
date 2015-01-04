@@ -1,33 +1,32 @@
 /*!
  * arr-filter <https://github.com/jonschlinkert/arr-filter>
  *
- * Copyright (c) 2014 Jon Schlinkert, contributors.
+ * Copyright (c) 2014-2015, Jon Schlinkert.
  * Licensed under the MIT License
  */
 
-var makeIterator = require('make-iterator');
-
 'use strict';
 
-module.exports = function filter(arr, cb, thisArg) {
-  cb = makeIterator(cb, thisArg);
+var iterator = require('make-iterator');
+
+var filter = module.exports = function filter(arr, cb, thisArg) {
   if (arr == null) {
     return [];
   }
 
-  if (typeof cb != 'function') {
-    return new TypeError();
+  if (typeof cb !== 'function') {
+    throw new TypeError('arr-filter expects a callback function.');
   }
 
   var len = arr.length;
-  var res = [];
+  var res = arr.slice();
 
-  for (var i = 0; i < len; i++) {
-    var ele = arr[i];
-
-    if (cb(ele, i, arr)) {
-      res.push(ele);
+  while (len--) {
+    if (!cb(arr[len])) {
+      res.splice(len, 1);
     }
   }
+
   return res;
 };
+
