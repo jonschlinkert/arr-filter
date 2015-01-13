@@ -20,9 +20,10 @@ module.exports = function filter(arr, cb, thisArg) {
 
   var len = arr.length;
   var res = arr.slice();
+  var i = 0;
 
   while (len--) {
-    if (!cb(arr[len])) {
+    if (!cb(arr[len], i++)) {
       res.splice(len, 1);
     }
   }
