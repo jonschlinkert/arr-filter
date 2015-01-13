@@ -9,7 +9,7 @@
 
 var iterator = require('make-iterator');
 
-var filter = module.exports = function filter(arr, cb, thisArg) {
+module.exports = function filter(arr, cb, thisArg) {
   if (arr == null) {
     return [];
   }
