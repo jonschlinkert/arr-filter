@@ -1,7 +1,7 @@
 {
   "name": "arr-filter",
   "description": "Faster alternative to javascript's native filter method.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/jonschlinkert/arr-filter",
   "author": {
     "name": "Jon Schlinkert",
