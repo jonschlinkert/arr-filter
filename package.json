@@ -1,7 +1,7 @@
 {
   "name": "arr-filter",
   "description": "Faster alternative to javascript's native filter method.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "homepage": "https://github.com/jonschlinkert/arr-filter",
   "author": {
     "name": "Jon Schlinkert",
@@ -16,15 +16,15 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/jonschlinkert/arr-filter/blob/master/LICENSE-MIT"
+    "url": "https://github.com/jonschlinkert/arr-filter/blob/master/LICENSE"
   },
+  "files": ["index.js"],
   "main": "index.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "docs": "update && license && npmignore && deps && verb",
-    "all": "npm run docs"
+    "test": "mocha"
   },
   "dependencies": {
     "make-iterator": "^0.1.0"

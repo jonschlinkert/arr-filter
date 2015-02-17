@@ -18,6 +18,7 @@ module.exports = function filter(arr, cb, thisArg) {
     throw new TypeError('arr-filter expects a callback function.');
   }
 
+  cb = iterator(cb, thisArg);
   var len = arr.length;
   var res = arr.slice();
   var i = 0;
