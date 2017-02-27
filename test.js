@@ -7,8 +7,9 @@
 
 'use strict';
 
+require('mocha');
+var assert = require('assert');
 var path = require('path');
-var should = require('should');
 var filter = require('./');
 
 describe('filter:', function () {
@@ -16,14 +17,14 @@ describe('filter:', function () {
     var actual = filter(['a', {a: 'b'}, 1, 'b', 2, {c: 'd'}, 'c'], function (ele) {
       return typeof ele === 'string';
     });
-    actual.should.eql(['a', 'b', 'c']);
+    assert.deepEqual(actual, ['a', 'b', 'c']);
   });
 
   it('should filter objects:', function () {
     var actual = filter(['a', {a: 'b'}, 1, 'b', 2, {c: 'd'}, 'c'], function (ele) {
       return typeof ele === 'object';
     });
-    actual.should.eql([{a: 'b'}, {c: 'd'}]);
+    assert.deepEqual(actual, [{a: 'b'}, {c: 'd'}]);
   });
 
   it('should filter strings:', function () {
@@ -33,13 +34,13 @@ describe('filter:', function () {
       };
     }
 
-    filter(['a/b/c.js', 'a/b/c.css'], ext('.css')).should.eql(['a/b/c.css']);
-    filter(['a/b/c.js', 'a/b/c.css'], ext('.js')).should.eql(['a/b/c.js']);
+    assert.deepEqual(filter(['a/b/c.js', 'a/b/c.css'], ext('.css')), ['a/b/c.css']);
+    assert.deepEqual(filter(['a/b/c.js', 'a/b/c.css'], ext('.js')), ['a/b/c.js']);
   });
 
-  it('should throw an error when the callback is missing.', function () {
-    (function() {
+  it('should throw an error when the callback is not a function', function () {
+    assert.throws(function() {
       filter(['a/b/c.js', 'a/b/c.css']);
-    }).should.throw('arr-filter expects a callback function.');
+    }, /expected callback to be a function/);
   });
 });
